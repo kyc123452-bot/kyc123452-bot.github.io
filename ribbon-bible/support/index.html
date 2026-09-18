@@ -1,0 +1,306 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Ribbon Bible 기능 안내, 백업·복원 방법, 문제 해결을 확인하세요." />
+    <title>리본 성경책 고객지원</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Noto Sans KR", "Segoe UI", sans-serif;
+        --paper: #fcfcfd;
+        --surface: #f7f8fa;
+        --ink: #171c23;
+        --muted: #687382;
+        --navy: #194c85;
+        --pale-blue: #eaf2fa;
+        --line: #e5e9ef;
+        --focus: #194c85;
+      }
+
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--paper); color: var(--ink); }
+      a { color: var(--navy); text-underline-offset: .2em; }
+      a:hover { text-decoration-thickness: 2px; }
+      a:focus-visible, summary:focus-visible {
+        outline: 3px solid var(--focus);
+        outline-offset: 3px;
+        border-radius: 12px;
+      }
+      ::selection { background: #eaf2fa; color: #171c23; }
+
+      .skip-link {
+        position: fixed;
+        inset: 8px auto auto 8px;
+        z-index: 2;
+        transform: translateY(-160%);
+        padding: 11px 14px;
+        background: var(--ink);
+        color: var(--paper);
+        border-radius: 14px;
+      }
+      .skip-link:focus { transform: translateY(0); }
+
+      header, main, footer { width: min(calc(100% - 40px), 760px); margin-inline: auto; }
+      header { padding-block: 28px 18px; border-bottom: 1px solid var(--line); }
+      .brand-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .brand {
+        margin: 0;
+        color: var(--navy);
+        font-size: 13px;
+        font-weight: 800;
+        letter-spacing: .12em;
+        text-decoration: none;
+      }
+      .language-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+      .language-nav a {
+        display: inline-flex;
+        min-height: 44px;
+        align-items: center;
+        padding-inline: 12px;
+        border-radius: 999px;
+        color: var(--muted);
+        font-size: 14px;
+        font-weight: 650;
+        text-decoration: none;
+      }
+      .language-nav a[aria-current="page"] { background: var(--pale-blue); color: var(--navy); }
+
+      main { padding-block: 42px 64px; }
+      h1 { max-width: 13ch; margin: 0; font-size: clamp(34px, 8vw, 48px); line-height: 1.16; letter-spacing: -.035em; word-break: keep-all; }
+      .lead { max-width: 44rem; margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.75; word-break: keep-all; }
+      .quick-nav {
+        margin-top: 32px;
+        padding: 18px 20px;
+        background: var(--pale-blue);
+        border-radius: 14px;
+      }
+      .quick-nav strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 15px; }
+      .quick-nav ul { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding: 0; list-style: none; }
+      .quick-nav a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; }
+
+      section { scroll-margin-top: 24px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
+      h2 { margin: 0 0 16px; font-size: clamp(24px, 5vw, 30px); line-height: 1.3; letter-spacing: -.025em; word-break: keep-all; }
+      h3 { margin: 28px 0 8px; font-size: 19px; line-height: 1.4; }
+      p, li { font-size: 17px; line-height: 1.75; word-break: keep-all; overflow-wrap: break-word; }
+      p { margin: 10px 0; }
+      ol { margin: 0; padding-left: 1.55rem; }
+      ol li { padding-left: .45rem; }
+      ol li + li { margin-top: 9px; }
+      ol li::marker { color: var(--navy); font-weight: 800; }
+      .path { margin-top: 18px; padding: 14px 16px; background: var(--surface); border-radius: 12px; color: var(--muted); }
+      .path strong { color: var(--ink); }
+      code { padding: .12em .35em; background: var(--surface); border-radius: 12px; color: var(--ink); font-family: inherit; font-size: .94em; }
+
+      .faq-list { margin-top: 4px; border-bottom: 1px solid var(--line); }
+      details { border-top: 1px solid var(--line); }
+      summary { cursor: pointer; padding: 18px 4px; font-size: 17px; font-weight: 750; line-height: 1.5; }
+      details p { margin: 0; padding: 0 4px 20px; color: var(--muted); }
+      .contact { padding: 20px; background: var(--pale-blue); border-radius: 14px; }
+      .contact p:first-child { margin-top: 0; }
+      .contact p:last-child { margin-bottom: 0; }
+      .contact a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 750; overflow-wrap: anywhere; }
+
+      footer { padding-block: 24px 48px; border-top: 1px solid var(--line); color: var(--muted); }
+      footer p { margin: 0; font-size: 14px; }
+      footer a { display: inline-flex; min-height: 44px; align-items: center; }
+
+      @media (max-width: 520px) {
+        header, main, footer { width: min(calc(100% - 28px), 760px); }
+        header { padding-top: 18px; }
+        .brand-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+        .language-nav { justify-content: flex-start; margin-left: -12px; }
+        main { padding-top: 34px; }
+        .quick-nav { padding: 14px 16px; }
+        .quick-nav ul { display: block; }
+        .quick-nav a { width: 100%; }
+        section { margin-top: 40px; }
+      }
+
+      @media (prefers-color-scheme: dark) {
+        :root {
+          --paper: #111418;
+          --surface: #191e24;
+          --ink: #d9dee5;
+          --muted: #aeb6c0;
+          --navy: #9dcafa;
+          --pale-blue: #191e24;
+          --line: #39434e;
+          --focus: #9dcafa;
+        }
+        ::selection { background: #194c85; color: #d9dee5; }
+      }
+
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      @media print {
+        .skip-link, .language-nav, .quick-nav { display: none; }
+        header, main, footer { width: 100%; }
+        body { background: #fff; color: #000; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+    <header>
+      <div class="brand-row">
+        <a class="brand" href="#main-content">RIBBON BIBLE</a>
+        <nav class="language-nav" aria-label="도움말 언어 선택">
+          <a href="./" lang="ko" hreflang="ko" aria-current="page">한국어</a>
+          <a href="./en/" lang="en" hreflang="en">English</a>
+          <a href="./es/" lang="es" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <h1>리본 성경책 고객지원</h1>
+      <p class="lead">읽고, 찾고, 기록하는 방법을 실제 버튼 순서대로 안내합니다. 성경 본문과 개인 기록은 준비된 판본에서 인터넷 연결 없이도 사용할 수 있습니다.</p>
+
+      <nav class="quick-nav" aria-label="기능별 도움말">
+        <strong>바로 찾기</strong>
+        <ul>
+          <li><a href="#read">읽기·이동</a></li>
+          <li><a href="#verse-actions">구절 도구</a></li>
+          <li><a href="#search">찾기</a></li>
+          <li><a href="#plans">읽기표</a></li>
+          <li><a href="#library">보관함·백업</a></li>
+          <li><a href="#settings">읽기 환경·언어</a></li>
+          <li><a href="#troubleshooting">문제 해결</a></li>
+        </ul>
+      </nav>
+
+      <section id="quick-start">
+        <h2>처음 열었다면</h2>
+        <ol>
+          <li>화면 아래의 <strong>읽기</strong>를 누릅니다.</li>
+          <li>위쪽의 <strong>현재 권·장</strong>을 누르고 읽을 본문을 고릅니다.</li>
+          <li>기록하고 싶은 <strong>절을 한 번 누르면</strong> 구절 도구가 열립니다.</li>
+        </ol>
+      </section>
+
+      <section id="read">
+        <h2>성경 읽기와 권·장 이동</h2>
+        <ol>
+          <li>아래 탭에서 <strong>읽기</strong>를 누릅니다.</li>
+          <li>상단 가운데의 <strong>현재 권·장</strong>을 누르면 <strong>권·장 이동</strong>이 열립니다.</li>
+          <li><strong>최근·구약·신약</strong>에서 고르거나 <code>요 3:16</code>처럼 주소를 입력하면 해당 본문이 열립니다.</li>
+          <li>읽기 방식을 <strong>세로 스크롤</strong>로 고르면 위·아래로, <strong>좌우 넘김</strong>으로 고르면 좌·우로 이동합니다.</li>
+        </ol>
+        <p class="path"><strong>경로:</strong> 읽기 → 상단 현재 권·장</p>
+      </section>
+
+      <section id="verse-actions">
+        <h2>구절 복사·공유·기록</h2>
+        <ol>
+          <li>읽기 화면에서 원하는 <strong>절을 한 번 누릅니다.</strong></li>
+          <li>아래에 나타난 구절 도구에서 <strong>복사·공유·북마크·메모·형광펜</strong> 중 하나를 누릅니다.</li>
+          <li>메모를 작성하고 닫으면 저장되며, 형광펜은 색을 고른 뒤 선택 표시를 확인합니다.</li>
+          <li>저장한 항목은 아래의 <strong>보관함</strong>에서 원문과 함께 다시 볼 수 있습니다.</li>
+        </ol>
+        <p class="path"><strong>경로:</strong> 읽기 → 절 누르기 → 아래 구절 도구</p>
+      </section>
+
+      <section id="search">
+        <h2>단어·문장·성경 주소 찾기</h2>
+        <ol>
+          <li>아래 탭에서 <strong>찾기</strong>를 누릅니다.</li>
+          <li>검색창에 단어, 문장 일부 또는 <code>창 1:1</code>과 같은 성경 주소를 입력합니다.</li>
+          <li>결과에서 원하는 구절을 누르면 읽기 화면의 정확한 절로 이동합니다.</li>
+        </ol>
+        <p class="path"><strong>경로:</strong> 아래 찾기 → 검색어 입력 → 결과 누르기</p>
+      </section>
+
+      <section id="plans">
+        <h2>읽기표로 진도 관리</h2>
+        <ol>
+          <li>아래 탭에서 <strong>읽기표</strong>를 누릅니다.</li>
+          <li>상단의 <strong>계획 이름</strong>을 누르고 읽기 계획과 시작일을 고릅니다.</li>
+          <li>읽을 본문의 <strong>글자 행</strong>을 누르면 해당 본문이 열립니다.</li>
+          <li>읽은 뒤에는 왼쪽의 <strong>체크박스</strong>를 누릅니다. 잘못 표시했다면 저장 안내에서 <strong>되돌리기</strong>를 누릅니다.</li>
+        </ol>
+        <p class="path"><strong>경로:</strong> 아래 읽기표 → 계획 선택 → 글자 행 또는 체크박스</p>
+      </section>
+
+      <section id="library">
+        <h2>보관함과 백업·복원</h2>
+        <ol>
+          <li>아래 탭에서 <strong>보관함</strong>을 누릅니다.</li>
+          <li><strong>북마크·메모·형광펜</strong> 탭을 눌러 저장한 기록을 보고, 항목을 누르면 원문으로 이동합니다.</li>
+          <li><strong>백업하기</strong>를 누르면 시스템 공유 화면이 열립니다. JSON 파일을 믿을 수 있는 파일 저장소에 보관하세요.</li>
+          <li><strong>복원</strong>을 누르고 이전에 내보낸 JSON 파일을 고릅니다. 확인 화면에서 기록 수를 확인한 뒤 복원합니다.</li>
+        </ol>
+        <p class="path"><strong>중요:</strong> 복원은 현재 기록을 백업 파일의 기록으로 교체합니다. 먼저 현재 기록을 백업하세요. 백업은 암호화되지 않은 평문 JSON이며 자동 클라우드 동기화는 아닙니다.</p>
+      </section>
+
+      <section id="settings">
+        <h2>읽기 환경과 언어·판본</h2>
+        <h3>눈에 맞게 읽기</h3>
+        <ol>
+          <li>읽기 화면 오른쪽 위의 <strong>가</strong>를 누릅니다.</li>
+          <li><strong>글자 크기·줄 간격·본문 폭</strong>을 조정하고, 세로 스크롤과 좌우 넘김 중 편한 방식을 고릅니다.</li>
+          <li><strong>밝게·눈 편안·어둡게</strong>와 화면 꺼짐 방지를 필요한 때만 선택합니다.</li>
+          <li>전체 설정을 한 번에 바꾸려면 왼쪽 위 <strong>메뉴 → 읽기 모드</strong>에서 <strong>기본 읽기, 처음 읽기, 목회·연구, 큰글·간편</strong> 중 하나를 고릅니다. 오른쪽 위의 '가'를 눌러 각 설정을 다시 조정할 수 있습니다.</li>
+        </ol>
+
+        <h3>성경 언어와 앱 표시 언어</h3>
+        <ol>
+          <li>읽기 화면 왼쪽 위의 <strong>메뉴</strong>를 누릅니다.</li>
+          <li><strong>언어 및 판본</strong>을 누릅니다.</li>
+          <li>읽을 <strong>성경 언어·판본</strong>과 <strong>앱 메뉴 언어</strong>를 각각 고릅니다. 현재 빌드에 준비된 판본만 목록에 표시됩니다.</li>
+        </ol>
+        <p class="path"><strong>경로:</strong> 읽기 → 오른쪽 위 '가' / 읽기 → 왼쪽 위 메뉴 → 읽기 모드 또는 언어 및 판본</p>
+      </section>
+
+      <section id="accessibility">
+        <h2>큰 글자·접근성·오프라인</h2>
+        <ul>
+          <li><strong>큰글·간편</strong> 설정은 글자와 읽기 조작계를 함께 크게 보여 줍니다. 기기의 글자 크기 설정도 함께 반영됩니다.</li>
+          <li><strong>눈 편안</strong>과 <strong>어둡게</strong>를 읽는 환경에 맞게 고르세요.</li>
+          <li>버튼은 VoiceOver와 TalkBack에서 기능 이름으로 읽힐 수 있도록 구성되어 있습니다.</li>
+          <li>준비된 성경 본문, 검색, 보관함, 읽기표는 <strong>오프라인</strong>으로 사용할 수 있습니다.</li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>문제 해결</h2>
+        <div class="faq-list">
+          <details>
+            <summary>메모나 기록이 저장되지 않아요.</summary>
+            <p>저장 안내 문구를 확인하고 앱을 다시 열어 보세요. 기기의 저장 공간을 확인하고, 앱을 삭제하기 전에 보관함의 기존 기록을 백업하세요.</p>
+          </details>
+          <details>
+            <summary>복원 파일을 열 수 없어요.</summary>
+            <p>Ribbon Bible에서 내보낸 JSON 파일인지, 16MiB보다 작은지 확인하세요. 더 최신 버전에서 만든 백업이라면 앱을 업데이트한 뒤 다시 시도하세요. 복원이 실패해도 기존 기록은 그대로 유지됩니다.</p>
+          </details>
+          <details>
+            <summary>새 기기에서 구매한 앱과 기록을 이어서 쓰고 싶어요.</summary>
+            <p>같은 Apple 또는 Google 스토어 계정의 구입 항목에서 앱을 다시 내려받으세요. 개인 기록은 구매 내역과 별도이므로, 이전 기기에서 내보낸 백업 파일을 새 기기의 보관함에서 복원해야 합니다.</p>
+          </details>
+          <details>
+            <summary>원하는 언어나 판본이 보이지 않아요.</summary>
+            <p>읽기 화면의 메뉴 → 언어 및 판본에서 확인하세요. 권리와 품질 기준을 통과해 현재 빌드에 포함된 판본만 표시됩니다.</p>
+          </details>
+          <details>
+            <summary>검색 결과가 없어요.</summary>
+            <p>긴 문장 대신 핵심 단어 몇 개로 다시 검색하거나, 성경 주소는 <code>요 3:16</code>처럼 권명·장·절 순서로 입력하세요.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>문의하기</h2>
+        <div class="contact">
+          <p>해결되지 않으면 기기 종류, iOS·Android 버전, Ribbon Bible 버전, 문제가 생기기 전에 누른 버튼 순서와 화면 사진을 함께 보내 주세요.</p>
+          <p><a href="mailto:kyc123452@gmail.com">kyc123452@gmail.com</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="../privacy-policy/">리본 성경책 개인정보 처리방침</a></p>
+    </footer>
+  </body>
+</html>

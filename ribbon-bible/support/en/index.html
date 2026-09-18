@@ -1,0 +1,246 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="light dark" />
+    <meta name="description" content="Learn how to use Ribbon Bible, back up and restore your records, and solve common problems." />
+    <title>Ribbon Bible Help</title>
+    <style>
+      :root {
+        color-scheme: light dark;
+        font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+        --paper: #fcfcfd; --surface: #f7f8fa; --ink: #171c23; --muted: #687382;
+        --navy: #194c85; --pale-blue: #eaf2fa; --line: #e5e9ef; --focus: #194c85;
+      }
+      * { box-sizing: border-box; }
+      html { scroll-behavior: smooth; }
+      body { margin: 0; background: var(--paper); color: var(--ink); }
+      a { color: var(--navy); text-underline-offset: .2em; }
+      a:hover { text-decoration-thickness: 2px; }
+      a:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 3px; border-radius: 12px; }
+      ::selection { background: #eaf2fa; color: #171c23; }
+      .skip-link { position: fixed; inset: 8px auto auto 8px; z-index: 2; transform: translateY(-160%); padding: 11px 14px; background: var(--ink); color: var(--paper); border-radius: 14px; }
+      .skip-link:focus { transform: translateY(0); }
+      header, main, footer { width: min(calc(100% - 40px), 760px); margin-inline: auto; }
+      header { padding-block: 28px 18px; border-bottom: 1px solid var(--line); }
+      .brand-row { display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+      .brand { margin: 0; color: var(--navy); font-size: 13px; font-weight: 800; letter-spacing: .12em; text-decoration: none; }
+      .language-nav { display: flex; gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+      .language-nav a { display: inline-flex; min-height: 44px; align-items: center; padding-inline: 12px; border-radius: 999px; color: var(--muted); font-size: 14px; font-weight: 650; text-decoration: none; }
+      .language-nav a[aria-current="page"] { background: var(--pale-blue); color: var(--navy); }
+      main { padding-block: 42px 64px; }
+      h1 { max-width: 13ch; margin: 0; font-size: clamp(34px, 8vw, 48px); line-height: 1.16; letter-spacing: -.035em; }
+      .lead { max-width: 44rem; margin: 18px 0 0; color: var(--muted); font-size: 18px; line-height: 1.75; }
+      .quick-nav { margin-top: 32px; padding: 18px 20px; background: var(--pale-blue); border-radius: 14px; }
+      .quick-nav strong { display: block; margin-bottom: 8px; color: var(--ink); font-size: 15px; }
+      .quick-nav ul { display: flex; flex-wrap: wrap; gap: 4px 18px; margin: 0; padding: 0; list-style: none; }
+      .quick-nav a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 700; }
+      section { scroll-margin-top: 24px; margin-top: 48px; padding-top: 28px; border-top: 1px solid var(--line); }
+      h2 { margin: 0 0 16px; font-size: clamp(24px, 5vw, 30px); line-height: 1.3; letter-spacing: -.025em; }
+      h3 { margin: 28px 0 8px; font-size: 19px; line-height: 1.4; }
+      p, li { font-size: 17px; line-height: 1.75; overflow-wrap: break-word; }
+      p { margin: 10px 0; }
+      ol { margin: 0; padding-left: 1.55rem; }
+      ol li { padding-left: .45rem; }
+      ol li + li { margin-top: 9px; }
+      ol li::marker { color: var(--navy); font-weight: 800; }
+      .path { margin-top: 18px; padding: 14px 16px; background: var(--surface); border-radius: 12px; color: var(--muted); }
+      .path strong { color: var(--ink); }
+      code { padding: .12em .35em; background: var(--surface); border-radius: 12px; color: var(--ink); font-family: inherit; font-size: .94em; }
+      .faq-list { margin-top: 4px; border-bottom: 1px solid var(--line); }
+      details { border-top: 1px solid var(--line); }
+      summary { cursor: pointer; padding: 18px 4px; font-size: 17px; font-weight: 750; line-height: 1.5; }
+      details p { margin: 0; padding: 0 4px 20px; color: var(--muted); }
+      .contact { padding: 20px; background: var(--pale-blue); border-radius: 14px; }
+      .contact p:first-child { margin-top: 0; }
+      .contact p:last-child { margin-bottom: 0; }
+      .contact a { display: inline-flex; min-height: 44px; align-items: center; font-weight: 750; overflow-wrap: anywhere; }
+      footer { padding-block: 24px 48px; border-top: 1px solid var(--line); color: var(--muted); }
+      footer p { margin: 0; font-size: 14px; }
+      footer a { display: inline-flex; min-height: 44px; align-items: center; }
+      @media (max-width: 520px) {
+        header, main, footer { width: min(calc(100% - 28px), 760px); }
+        header { padding-top: 18px; }
+        .brand-row { align-items: flex-start; flex-direction: column; gap: 8px; }
+        .language-nav { justify-content: flex-start; margin-left: -12px; }
+        main { padding-top: 34px; }
+        .quick-nav { padding: 14px 16px; }
+        .quick-nav ul { display: block; }
+        .quick-nav a { width: 100%; }
+        section { margin-top: 40px; }
+      }
+      @media (prefers-color-scheme: dark) {
+        :root { --paper: #111418; --surface: #191e24; --ink: #d9dee5; --muted: #aeb6c0; --navy: #9dcafa; --pale-blue: #191e24; --line: #39434e; --focus: #9dcafa; }
+        ::selection { background: #194c85; color: #d9dee5; }
+      }
+      @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+      @media print {
+        .skip-link, .language-nav, .quick-nav { display: none; }
+        header, main, footer { width: 100%; }
+        body { background: #fff; color: #000; }
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <header>
+      <div class="brand-row">
+        <a class="brand" href="#main-content">RIBBON BIBLE</a>
+        <nav class="language-nav" aria-label="Choose help language">
+          <a href="../" lang="ko" hreflang="ko">한국어</a>
+          <a href="./" lang="en" hreflang="en" aria-current="page">English</a>
+          <a href="../es/" lang="es" hreflang="es">Español</a>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main-content">
+      <h1>Ribbon Bible Help</h1>
+      <p class="lead">Follow the actual controls to read, find, and save passages. Bundled Bible editions, search, personal records, and reading plans remain available without an internet connection.</p>
+
+      <nav class="quick-nav" aria-label="Help topics">
+        <strong>Jump to a topic</strong>
+        <ul>
+          <li><a href="#read">Read and navigate</a></li>
+          <li><a href="#verse-actions">Verse tools</a></li>
+          <li><a href="#search">Search</a></li>
+          <li><a href="#plans">Reading plans</a></li>
+          <li><a href="#library">Library and backup</a></li>
+          <li><a href="#settings">Reading and language</a></li>
+          <li><a href="#troubleshooting">Troubleshooting</a></li>
+        </ul>
+      </nav>
+
+      <section id="quick-start">
+        <h2>Start here</h2>
+        <ol>
+          <li>Tap <strong>Read</strong> in the bottom navigation.</li>
+          <li>Tap the <strong>current book and chapter</strong> at the top, then choose a passage.</li>
+          <li><strong>Tap a verse once</strong> to open its verse tools.</li>
+        </ol>
+      </section>
+
+      <section id="read">
+        <h2>Read and move to a passage</h2>
+        <ol>
+          <li>Tap <strong>Read</strong> in the bottom navigation.</li>
+          <li>Tap the <strong>current book and chapter</strong> in the center of the top bar to open <strong>Go to passage</strong>.</li>
+          <li>Choose from <strong>Recent, Old Testament, or New Testament</strong>, or enter an address such as <code>John 3:16</code>.</li>
+          <li>With <strong>Vertical scroll</strong>, move up and down. With <strong>Swipe pages</strong>, swipe left and right.</li>
+        </ol>
+        <p class="path"><strong>Path:</strong> Read → current book and chapter at the top</p>
+      </section>
+
+      <section id="verse-actions">
+        <h2>Copy, share, and save a verse</h2>
+        <ol>
+          <li>On the reading screen, <strong>tap the verse you want once.</strong></li>
+          <li>Use <strong>Copy, Share, Bookmark, Note, or Highlighter</strong> in the verse tools that appear at the bottom.</li>
+          <li>Write your note and close the editor to save it. For a highlight, choose a named color and check its selected state.</li>
+          <li>Open <strong>Library</strong> in the bottom navigation to see each saved item with its Scripture text.</li>
+        </ol>
+        <p class="path"><strong>Path:</strong> Read → tap a verse → verse tools at the bottom</p>
+      </section>
+
+      <section id="search">
+        <h2>Find a word, phrase, or reference</h2>
+        <ol>
+          <li>Tap <strong>Search</strong> in the bottom navigation.</li>
+          <li>Enter a word, part of a sentence, or a reference such as <code>Gen 1:1</code>.</li>
+          <li>Tap a result to open that exact verse in the reading screen.</li>
+        </ol>
+        <p class="path"><strong>Path:</strong> Search → enter a query → tap a result</p>
+      </section>
+
+      <section id="plans">
+        <h2>Track progress with Reading plans</h2>
+        <ol>
+          <li>Tap <strong>Plans</strong> in the bottom navigation.</li>
+          <li>Tap the <strong>plan name</strong> at the top, then choose a plan and start date.</li>
+          <li>Tap the <strong>text row</strong> for a reading to open its passage.</li>
+          <li>After reading, tap its <strong>checkbox</strong>. If that was a mistake, tap <strong>Undo</strong> in the saved message.</li>
+        </ol>
+        <p class="path"><strong>Path:</strong> Plans → choose a plan → tap the text row or checkbox</p>
+      </section>
+
+      <section id="library">
+        <h2>Library, backup, and restore</h2>
+        <ol>
+          <li>Tap <strong>Library</strong> in the bottom navigation.</li>
+          <li>Open <strong>Bookmarks, Notes, or Highlights</strong>. Tap an item to return to its Scripture text.</li>
+          <li>Tap <strong>Back up</strong> to open the system share sheet, then save the JSON file in a location you trust.</li>
+          <li>Tap <strong>Restore</strong>, select a JSON file previously exported by Ribbon Bible, review the record counts, and confirm.</li>
+        </ol>
+        <p class="path"><strong>Important:</strong> Restore replaces current records with the records in the backup. Back up the current records first. The backup is unencrypted plain-text JSON, not automatic cloud sync.</p>
+      </section>
+
+      <section id="settings">
+        <h2>Reading settings, languages, and editions</h2>
+        <h3>Make reading comfortable</h3>
+        <ol>
+          <li>Tap <strong>Aa</strong> at the top right of the reading screen.</li>
+          <li>Adjust <strong>Text size, line spacing, and text width</strong>, then choose Vertical scroll or Swipe pages.</li>
+          <li>Choose <strong>Light, Comfort, or Dark</strong>. Enable Keep screen awake only when you need it.</li>
+          <li>To change the overall preset, open the top-left <strong>Menu → Reading mode</strong> and choose <strong>Standard reading, First-time reading, Pastor · Study, or Large type · Simple</strong>. Tap Aa to fine-tune individual settings.</li>
+        </ol>
+
+        <h3>Choose Scripture and app languages</h3>
+        <ol>
+          <li>Tap <strong>Menu</strong> at the top left of the reading screen.</li>
+          <li>Tap <strong>Language and editions</strong>.</li>
+          <li>Choose the <strong>Bible language and edition</strong> and the <strong>app display language</strong> separately. Only editions bundled in the current build are shown.</li>
+        </ol>
+        <p class="path"><strong>Path:</strong> Read → Aa at top right / Read → Menu at top left → Reading mode or Language and editions</p>
+      </section>
+
+      <section id="accessibility">
+        <h2>Large text, accessibility, and offline use</h2>
+        <ul>
+          <li><strong>Large and simple</strong> increases both Scripture text and reading controls. Your device text-size setting is respected as well.</li>
+          <li>Choose <strong>Eye comfort</strong> or <strong>Dark</strong> to suit the room where you read.</li>
+          <li>Controls include functional labels for VoiceOver and TalkBack.</li>
+          <li>Bundled Scripture, search, Library, and Reading plans work <strong>offline</strong>.</li>
+        </ul>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>Troubleshooting</h2>
+        <div class="faq-list">
+          <details>
+            <summary>A note or record is not saving.</summary>
+            <p>Check the saved message, then close and reopen the app. Confirm that the device has free storage. Before deleting the app, back up the existing records in Library.</p>
+          </details>
+          <details>
+            <summary>The restore file will not open.</summary>
+            <p>Use a JSON file exported by Ribbon Bible and confirm that it is smaller than 16 MiB. If a newer app version created it, update the app and try again. A failed restore leaves the existing records unchanged.</p>
+          </details>
+          <details>
+            <summary>I want to continue on a new device.</summary>
+            <p>Download the app again from the purchases or library of the same Apple or Google store account. Personal records are separate from the purchase, so restore the backup exported from the old device in Library.</p>
+          </details>
+          <details>
+            <summary>I cannot see the language or edition I want.</summary>
+            <p>Open Menu → Language and editions from the reading screen. Only editions included in the current build after rights and quality checks are shown.</p>
+          </details>
+          <details>
+            <summary>Search returns no results.</summary>
+            <p>Try a few distinctive words instead of a long sentence. Enter a reference in book, chapter, and verse order, such as <code>John 3:16</code>.</p>
+          </details>
+        </div>
+      </section>
+
+      <section id="contact">
+        <h2>Contact support</h2>
+        <div class="contact">
+          <p>If the problem continues, include your device model, iOS or Android version, Ribbon Bible version, the buttons you tapped before the problem, and a screenshot.</p>
+          <p><a href="mailto:kyc123452@gmail.com">kyc123452@gmail.com</a></p>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <p><a href="../../privacy-policy/en/">Ribbon Bible Privacy Policy</a></p>
+    </footer>
+  </body>
+</html>
